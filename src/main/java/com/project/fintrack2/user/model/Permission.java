@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Table(name = "permissions")
 public class Permission {
     @Id
-    private Integer id;
+    private Long id;
     private String name;
     private String description;
 

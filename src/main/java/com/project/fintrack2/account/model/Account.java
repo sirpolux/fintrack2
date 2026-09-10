@@ -22,7 +22,7 @@ import java.util.List;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JsonIgnore
@@ -33,11 +33,11 @@ public class Account {
     @Enumerated
     private AccountType accountType;
 
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(name = "accounts_currencies",
-//            joinColumns = @JoinColumn(name = "account_id"),
-//            inverseJoinColumns = @JoinColumn(name="currency_id"))
-//    private List<Currency> currency;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "accounts_currencies",
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name="currency_id"))
+    private List<Currency> currency;
     @Enumerated
     private Status status;
     private LocalDate dateCreated;
