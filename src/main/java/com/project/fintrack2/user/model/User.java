@@ -33,9 +33,9 @@ public class User {
     private UUID uuid;
 
     @NotNull
-    private String first_name;
+    private String firstName;
     @NotNull
-    private String last_name;
+    private String lastName;
 
     @Email
     private String email;
