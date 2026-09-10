@@ -1,6 +1,7 @@
 package com.project.fintrack2.user.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.project.fintrack2.user.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -23,9 +24,13 @@ import java.util.UUID;
 @Setter
 @Table(name = "users")
 public class User {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, updatable = false, nullable = false)
+    private UUID uuid;
 
     @NotNull
     private String first_name;
@@ -37,7 +42,10 @@ public class User {
     private String password;
 
     private String phoneNumber;
-    private
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
@@ -47,5 +55,13 @@ public class User {
 
     private LocalDateTime createAt;
     private LocalDateTime updatedAt;
+
+
+    @PrePersist
+    private void onCreate(){
+        if(uuid ==null){
+            uuid = UUID.randomUUID();
+        }
+    }
 
 }
