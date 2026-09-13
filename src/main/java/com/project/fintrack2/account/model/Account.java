@@ -33,12 +33,21 @@ public class Account {
     @Enumerated
     private AccountType accountType;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "accounts_currencies",
-            joinColumns = @JoinColumn(name = "account_id"),
-            inverseJoinColumns = @JoinColumn(name="currency_id"))
-    private List<Currency> currency;
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(name = "accounts_currencies",
+//            joinColumns = @JoinColumn(name = "account_id"),
+//            inverseJoinColumns = @JoinColumn(name="currency_id"))
+//    private List<Currency> currency;
+
+    @ManyToOne
+    private Currency currency;
+
+    private Long version;
+
+    private float accountBalance;
+
     @Enumerated
     private Status status;
     private LocalDate dateCreated;
+    private LocalDate updatedAt;
 }
