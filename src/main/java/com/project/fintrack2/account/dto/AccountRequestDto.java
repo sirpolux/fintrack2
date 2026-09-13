@@ -4,10 +4,7 @@ import com.project.fintrack2.Status;
 import com.project.fintrack2.account.enums.AccountType;
 import com.project.fintrack2.account.model.Currency;
 import com.project.fintrack2.user.model.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -16,14 +13,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Setter
 @Getter
+@Builder
 public class AccountRequestDto {
-    private Long id;
-    private User user_id;
     private String accountName;
     private AccountType accountType;
     private Currency currency;
-    private Float accountBalance;
     private Status status;
-    private LocalDate dateCreated;
-    private LocalDate lastUpdated;
 }
