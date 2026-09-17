@@ -35,8 +35,7 @@ public class Budget {
     private BudgetFrequency frequency;
     @Column(nullable = false, updatable = false)
     private BigDecimal amount;
-    @Column(nullable = false, updatable = false)
-    private BigDecimal currentAmount;
+
 
     @OneToMany
     @JsonIgnore
