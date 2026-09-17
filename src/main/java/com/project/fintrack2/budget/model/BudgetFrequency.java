@@ -4,14 +4,18 @@ import com.project.fintrack2.budget.enums.FrequencyType;
 import com.project.fintrack2.budget.enums.FrequencyUnit;
 import com.project.fintrack2.user.model.User;
 import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import tools.jackson.databind.annotation.JsonSerialize;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 public class BudgetFrequency {
     @Id
@@ -25,7 +29,8 @@ public class BudgetFrequency {
     private Integer frequencyValue;
     @EnumeratedValue
     private FrequencyUnit frequencyUnit;
-    private boolean is_system = false;
+    private boolean isSystem = false;
+    private boolean isActive;
     @ManyToOne
     private User userId;
     @CreationTimestamp

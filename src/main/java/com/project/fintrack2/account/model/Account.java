@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -42,9 +43,9 @@ public class Account {
     @ManyToOne
     private Currency currency;
 
-    private Long version;
+    private Integer version;
 
-    private float accountBalance;
+    private BigDecimal accountBalance;
 
     @Enumerated
     private Status status;
