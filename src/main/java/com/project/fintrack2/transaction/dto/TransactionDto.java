@@ -1,5 +1,6 @@
 package com.project.fintrack2.transaction.dto;
 
+import com.project.fintrack2.account.dto.AccountResponseDto;
 import com.project.fintrack2.account.model.Account;
 import com.project.fintrack2.categories.model.Category;
 import com.project.fintrack2.transaction.enums.TransactionStatus;
@@ -19,7 +20,7 @@ public class TransactionDto {
     private String transactionReference;
     private Category category;
     private User userId;
-    private Account accountId;
+    private AccountResponseDto account;
     private String currencyCode;
     private BigDecimal amount;
     private String description;
