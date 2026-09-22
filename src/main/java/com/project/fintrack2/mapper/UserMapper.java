@@ -2,12 +2,12 @@ package com.project.fintrack2.mapper;
 
 import com.project.fintrack2.user.dto.request.UserRequestDto;
 import com.project.fintrack2.user.dto.response.UserResponseDto;
-import com.project.fintrack2.user.model.Users;
+import com.project.fintrack2.user.model.User;
 
 public class UserMapper {
 
-    public static Users toUser(UserRequestDto userRequest){
-        return Users
+    public static User toUser(UserRequestDto userRequest){
+        return User
                 .builder()
                 .firstName(userRequest.getFirstname())
                 .lastName(userRequest.getLastname())
@@ -17,7 +17,7 @@ public class UserMapper {
                 .build();
     }
 
-    public static UserResponseDto toUserResponseDto(Users user){
+    public static UserResponseDto toUserResponseDto(User user){
         return UserResponseDto.builder()
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())

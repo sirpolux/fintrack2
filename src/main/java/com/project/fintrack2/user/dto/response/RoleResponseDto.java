@@ -1,4 +1,4 @@
-package com.project.fintrack2.user.dto.request;
+package com.project.fintrack2.user.dto.response;
 
 
 import lombok.*;

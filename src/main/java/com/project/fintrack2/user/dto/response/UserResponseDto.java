@@ -1,8 +1,6 @@
 package com.project.fintrack2.user.dto.response;
 
-import com.project.fintrack2.user.dto.request.RoleResponseDto;
 import com.project.fintrack2.user.enums.Status;
-import com.project.fintrack2.user.model.Role;
 import lombok.*;
 
 import java.util.List;

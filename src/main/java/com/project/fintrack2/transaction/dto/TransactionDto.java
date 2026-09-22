@@ -3,7 +3,7 @@ package com.project.fintrack2.transaction.dto;
 import com.project.fintrack2.account.dto.AccountResponseDto;
 import com.project.fintrack2.categories.model.Category;
 import com.project.fintrack2.transaction.enums.TransactionStatus;
-import com.project.fintrack2.user.model.Users;
+import com.project.fintrack2.user.model.User;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -18,7 +18,7 @@ public class TransactionDto {
     private Long id;
     private String transactionReference;
     private Category category;
-    private Users userId;
+    private User userId;
     private AccountResponseDto account;
     private String currencyCode;
     private BigDecimal amount;

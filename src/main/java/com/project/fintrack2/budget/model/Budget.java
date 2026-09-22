@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.fintrack2.budget.enums.BudgetStatus;
 import com.project.fintrack2.categories.model.Category;
 import com.project.fintrack2.transaction.model.Transaction;
-import com.project.fintrack2.user.model.Users;
+import com.project.fintrack2.user.model.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -25,7 +25,7 @@ public class Budget {
     private Long id;
     @ManyToOne
     @JoinColumn(nullable = false, updatable = false)
-    private Users userId;
+    private User userId;
     @ManyToOne
     private Category category;
 

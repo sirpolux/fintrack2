@@ -1,7 +1,7 @@
 package com.project.fintrack2.categories.model;
 
 import com.project.fintrack2.categories.enums.CategoryType;
-import com.project.fintrack2.user.model.Users;
+import com.project.fintrack2.user.model.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,7 +18,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Users userId;
+    private User userId;
     private String name;
     private String description;
     @EnumeratedValue

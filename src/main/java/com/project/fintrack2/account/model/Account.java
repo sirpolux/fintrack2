@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.fintrack2.Status;
 import com.project.fintrack2.account.enums.AccountType;
-import com.project.fintrack2.user.model.Users;
+import com.project.fintrack2.user.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,7 +27,7 @@ public class Account {
     @ManyToOne
     @JsonIgnore
     @JsonBackReference
-    private Users userId;
+    private User userId;
     private String accountName;
 
     @Enumerated

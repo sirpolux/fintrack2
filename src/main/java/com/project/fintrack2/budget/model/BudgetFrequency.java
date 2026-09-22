@@ -2,7 +2,7 @@ package com.project.fintrack2.budget.model;
 
 import com.project.fintrack2.budget.enums.FrequencyType;
 import com.project.fintrack2.budget.enums.FrequencyUnit;
-import com.project.fintrack2.user.model.Users;
+import com.project.fintrack2.user.model.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -32,7 +32,7 @@ public class BudgetFrequency {
     private boolean isSystem = false;
     private boolean isActive;
     @ManyToOne
-    private Users userId;
+    private User userId;
     @CreationTimestamp
     private Date createdAt;
     @UpdateTimestamp

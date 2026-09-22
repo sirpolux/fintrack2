@@ -23,7 +23,7 @@ import java.util.UUID;
 @Setter
 @Table(name = "users")
 @Builder
-public class Users {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

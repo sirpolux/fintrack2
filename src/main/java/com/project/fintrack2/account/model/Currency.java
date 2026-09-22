@@ -4,7 +4,7 @@ package com.project.fintrack2.account.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.fintrack2.Status;
-import com.project.fintrack2.user.model.Users;
+import com.project.fintrack2.user.model.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -35,6 +35,6 @@ public class Currency {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
     @JoinColumn(name = "user_id", nullable = false)
-    private Users addedBy;
+    private User addedBy;
 
 }

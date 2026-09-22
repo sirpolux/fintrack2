@@ -6,7 +6,7 @@ import com.project.fintrack2.mapper.UserMapper;
 import com.project.fintrack2.user.dto.request.UserRequestDto;
 import com.project.fintrack2.user.dto.response.UserResponseDto;
 import com.project.fintrack2.user.enums.Status;
-import com.project.fintrack2.user.model.Users;
+import com.project.fintrack2.user.model.User;
 import com.project.fintrack2.user.repo.UserRepository;
 import com.project.fintrack2.user.services.contract.UserServiceInt;
 import com.project.fintrack2.utility.Utility;
@@ -29,9 +29,9 @@ public class UserService implements UserServiceInt {
         if(userRepository.existsByEmail(userRequestDto.getEmail())){
             throw  new EmailAlreadyExistsException("This email address is not available");
         }
-        Users user = UserMapper.toUser(userRequestDto);
+        User user = UserMapper.toUser(userRequestDto);
         user.setPassword(Utility.encoder.encode(userRequestDto.getPassword()));
-        Users createdUser = userRepository.save(user);
+        User createdUser = userRepository.save(user);
         return ResponseWrapper.success("User account created", UserMapper.toUserResponseDto(createdUser), HttpStatus.CREATED);
 
 

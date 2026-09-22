@@ -3,7 +3,6 @@ package com.project.fintrack2.service;
 
 import com.project.fintrack2.auth.dto.LoginDto;
 import com.project.fintrack2.exception.InvalidLoginCredentialsException;
-import com.project.fintrack2.user.model.Users;
 import com.project.fintrack2.user.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 
