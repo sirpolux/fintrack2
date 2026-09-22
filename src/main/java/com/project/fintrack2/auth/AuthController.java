@@ -2,18 +2,22 @@ package com.project.fintrack2.auth;
 
 
 import com.project.fintrack2.auth.dto.LoginDto;
+import com.project.fintrack2.service.AuthUserService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/v1/auth")
+@RequiredArgsConstructor
 public class AuthController {
-    private final
-    public ResponseEntity<String> verify(@RequestBody @Valid LoginDto loginDto){
+    private final AuthUserService authUserService;
 
+    @PostMapping("/login")
+    public Map<String, String> verify(@RequestBody @Valid LoginDto loginDto){
+        return authUserService.verify(loginDto);
     }
 }

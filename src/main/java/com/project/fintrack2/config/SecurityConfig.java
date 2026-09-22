@@ -34,7 +34,7 @@ public class SecurityConfig
 
         return httpSecurity.csrf(customizer->customizer.disable())  //disables csrf
         .authorizeHttpRequests(request->
-                request.requestMatchers("/api/v1/users","/api/auth")
+                request.requestMatchers("/api/v1/users","/api/v1/auth/login")
                         .permitAll()
                         .anyRequest()
                         .authenticated()) //ensures that every request is authenticated.
@@ -45,8 +45,6 @@ public class SecurityConfig
                 .build();
        // return httpSecurity.build();
     }
-
-
 
     @Bean
     public AuthenticationProvider authenticationProvider(){

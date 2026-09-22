@@ -12,6 +12,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 public class AuthUserService {
@@ -20,13 +23,15 @@ public class AuthUserService {
     private final UserRepository userRepository;
     private final AuthenticationManager authenticationManager;
 
-    public String verify(LoginDto request){
+    public Map<String,String> verify(LoginDto request){
         Authentication authentication= authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
+        Map<String,String> token = new HashMap<>();
 
         if(authentication.isAuthenticated()){
-           return jwtService.generateToken(request.getEmail());
+            token.put("token", jwtService.generateToken(request.getEmail()));
+            return token;
         }
         else {
             throw new InvalidLoginCredentialsException("Invalid email address or password");
