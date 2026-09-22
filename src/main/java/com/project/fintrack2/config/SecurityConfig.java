@@ -34,7 +34,7 @@ public class SecurityConfig
 
         return httpSecurity.csrf(customizer->customizer.disable())  //disables csrf
         .authorizeHttpRequests(request->
-                request.requestMatchers("/api/v1/users")
+                request.requestMatchers("/api/v1/users","/api/auth")
                         .permitAll()
                         .anyRequest()
                         .authenticated()) //ensures that every request is authenticated.

@@ -31,4 +31,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleEmailAlreadyExistsException(EmailAlreadyExistsException err){
         return ResponseEntity.badRequest().body(err.getMessage());
     }
+
+    @ExceptionHandler(InvalidLoginCredentialsException.class)
+    public ResponseEntity<String> handlesInvalidLoginCredentialsException(String message){
+        return ResponseEntity.badRequest().body(message);
+    }
 }
