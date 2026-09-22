@@ -2,7 +2,7 @@ package com.project.fintrack2.saving_goals.model;
 
 import com.project.fintrack2.account.model.Account;
 import com.project.fintrack2.saving_goals.enums.SavingStatus;
-import com.project.fintrack2.user.model.User;
+import com.project.fintrack2.user.model.Users;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,7 +26,7 @@ public class SavingGoal {
     private String description;
     @ManyToOne
     @JoinColumn(nullable = false)
-    private User userId;
+    private Users userId;
     private BigDecimal targetAmount;
     private BigDecimal currentAmount;
     @EnumeratedValue

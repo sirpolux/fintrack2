@@ -4,7 +4,7 @@ import com.project.fintrack2.account.model.Account;
 import com.project.fintrack2.categories.model.Category;
 import com.project.fintrack2.transaction.enums.TransactionStatus;
 import com.project.fintrack2.transaction.enums.TransactionType;
-import com.project.fintrack2.user.model.User;
+import com.project.fintrack2.user.model.Users;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -26,7 +26,7 @@ public class RecurringTransaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private User userId;
+    private Users userId;
     @ManyToOne
     private Account account;
     @ManyToOne

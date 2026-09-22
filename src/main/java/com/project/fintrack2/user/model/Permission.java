@@ -25,7 +25,7 @@ public class Permission {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
     @JoinColumn(name = "user_id")
-    private User createdBy;
+    private Users createdBy;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

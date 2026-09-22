@@ -2,7 +2,7 @@ package com.project.fintrack2.audit.model;
 
 
 import com.project.fintrack2.audit.enums.Status;
-import com.project.fintrack2.user.model.User;
+import com.project.fintrack2.user.model.Users;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -22,7 +22,7 @@ public class AuditLog {
     private Long id;
     @ManyToOne
     @JoinColumn(nullable = false, updatable = false)
-    private User userId;
+    private Users userId;
     private String entityType;
     private String entityId;
     private String action;

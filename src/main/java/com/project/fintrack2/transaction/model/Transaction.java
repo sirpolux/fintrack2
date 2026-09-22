@@ -2,10 +2,9 @@ package com.project.fintrack2.transaction.model;
 
 
 import com.project.fintrack2.account.model.Account;
-import com.project.fintrack2.account.model.Currency;
 import com.project.fintrack2.categories.model.Category;
 import com.project.fintrack2.transaction.enums.TransactionStatus;
-import com.project.fintrack2.user.model.User;
+import com.project.fintrack2.user.model.Users;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -33,7 +32,7 @@ public class Transaction {
     private Category category;
     @ManyToOne
     @JoinColumn(nullable = false, updatable = false)
-    private User userId;
+    private Users userId;
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = false, updatable = false)
     private Account accountId;

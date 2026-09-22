@@ -1,4 +1,4 @@
-package com.project.fintrack2.user.dto;
+package com.project.fintrack2.user.dto.request;
 
 
 import jakarta.validation.constraints.NotNull;

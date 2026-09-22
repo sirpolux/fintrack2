@@ -9,9 +9,9 @@ import java.util.List;
 
 public class CustomUserPrincipal implements UserDetails
 {
-    private User user;
+    private Users user;
 
-    public CustomUserPrincipal(User user){
+    public CustomUserPrincipal(Users user){
         this.user=user;
     }
 

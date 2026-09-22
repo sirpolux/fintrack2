@@ -4,14 +4,10 @@ package com.project.fintrack2.account.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.fintrack2.Status;
-import com.project.fintrack2.user.model.User;
+import com.project.fintrack2.user.model.Users;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import jdk.jfr.Name;
 import lombok.*;
-
-import javax.annotation.processing.Generated;
-import java.util.UUID;
 
 @Entity
 @Table(name ="currencies")
@@ -39,6 +35,6 @@ public class Currency {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
     @JoinColumn(name = "user_id", nullable = false)
-    private User addedBy;
+    private Users addedBy;
 
 }

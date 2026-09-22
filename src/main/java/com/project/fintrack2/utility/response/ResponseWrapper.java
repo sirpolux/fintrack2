@@ -1,12 +1,13 @@
 package com.project.fintrack2.utility.response;
 
 
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 import java.time.Instant;
 import java.util.List;
 
-
+@Getter
 public class ResponseWrapper<T> {
     private boolean success;
     private List<String> messages;
@@ -34,10 +35,10 @@ public class ResponseWrapper<T> {
 
     }
 
-    public static <T> ResponseWrapper<T> success(List<String> messages, T data, HttpStatus status){
+    public static <T> ResponseWrapper<T> success(String messages, T data, HttpStatus status){
         return new ResponseWrapper<T>(
                 true,
-                messages,
+                List.of(messages),
                 HttpStatus.OK.value(),
                 null,
                 data,
@@ -58,13 +59,13 @@ public class ResponseWrapper<T> {
     }
 
     public static <T>ResponseWrapper<T> success(
-            List<String> messages,
+            String messages,
             T data,
             MetaData meta
             ){
             return new ResponseWrapper<>(
                     true,
-                    messages,
+                    List.of(messages),
                     HttpStatus.OK.value(),
                     null,
                     data,

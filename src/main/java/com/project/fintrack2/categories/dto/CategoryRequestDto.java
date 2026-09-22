@@ -2,8 +2,7 @@ package com.project.fintrack2.categories.dto;
 
 
 import com.project.fintrack2.categories.enums.CategoryType;
-import com.project.fintrack2.user.model.User;
-import jakarta.persistence.*;
+import com.project.fintrack2.user.model.Users;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -15,7 +14,7 @@ import java.time.LocalDate;
 @Builder
 public class CategoryRequestDto {
     private Long id;
-    private User user;
+    private Users user;
     private String name;
     private String description;
     private CategoryType type;

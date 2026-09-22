@@ -22,7 +22,7 @@ public class Role {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @JsonBackReference
-    private User createdBy;
+    private Users createdBy;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "roles_permissions", joinColumns = @JoinColumn(name="role_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))

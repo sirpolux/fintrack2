@@ -1,4 +1,4 @@
-package com.project.fintrack2.user.dto;
+package com.project.fintrack2.user.dto.request;
 
 
 import jakarta.validation.constraints.Email;
@@ -24,8 +24,8 @@ public class UserRequestDto {
     private String email;
     @NotNull(message = "Phone number is required")
     private String phoneNumber;
-    @NotNull(message = "Role is required")
-    private Long role_id;
+//    @NotNull(message = "Role is required")
+    private Long roleId;
 
     @NotNull(message = "Password is required")
     @Size(min = 8, message = "Password must have at least 8 characters")
