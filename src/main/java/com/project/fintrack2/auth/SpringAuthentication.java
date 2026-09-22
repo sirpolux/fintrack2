@@ -1,5 +1,6 @@
 package com.project.fintrack2.auth;
 
+import com.project.fintrack2.constants.ErrorCodes;
 import com.project.fintrack2.exception.CustomRuntimeException;
 import com.project.fintrack2.user.model.User;
 import com.project.fintrack2.user.repo.UserRepository;
@@ -9,6 +10,8 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 
 @AllArgsConstructor
@@ -28,8 +31,8 @@ public class SpringAuthentication implements AuthenticationContract{
             throw new CustomRuntimeException(HttpStatus.FORBIDDEN, "Unauthorized", ErrorCodes.BAD_REQUEST_ERROR);
         }
         String currentUserUid = authentication.getName();
-        User user = (userRepository.findByUid(currentUserUid)).get();
-
+        System.out.println(currentUserUid);
+        User user = (userRepository.findByUuid(UUID.fromString(currentUserUid))).get();
         return user;
     }
 }
