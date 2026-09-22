@@ -12,6 +12,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Getter
@@ -24,15 +25,18 @@ public class RecurringTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
     private User userId;
-    @ManyToMany
+    @ManyToOne
     private Account account;
-    @ManyToMany
+    @ManyToOne
     private Category categoryId;
     @EnumeratedValue
     private TransactionType transactionType;
     @EnumeratedValue
     private TransactionStatus transactionStatus;
+    @OneToMany
+    private List<Transaction> transactions;
     private BigDecimal amount;
     private Integer frequency;
     private String description;

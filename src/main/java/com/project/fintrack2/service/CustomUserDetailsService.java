@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import com.project.fintrack2.user.model.UserPrincipal;
+import com.project.fintrack2.user.model.CustomUserPrincipal;
 
 import java.nio.file.attribute.UserPrincipal;
 
@@ -25,6 +25,6 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new EmailNotFoundException("Email not found");
         }
 
-        return new UserPrincipal(user);
+        return new CustomUserPrincipal(user);
     }
 }
