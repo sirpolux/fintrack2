@@ -7,8 +7,6 @@ import com.project.fintrack2.utility.response.ResponseWrapper;
 import java.util.List;
 
 public interface RoleRepository {
-        ResponseWrapper<RoleResponseDto> save(RoleRequestDto roleRequestDto);
-        ResponseWrapper<List<RoleResponseDto>> getAll();
-        ResponseWrapper<RoleResponseDto> update(RoleRequestDto roleRequestDto);
+
 
 }
