@@ -12,14 +12,14 @@ import com.project.fintrack2.user.services.contract.RoleServiceInterface;
 import com.project.fintrack2.utility.response.ResponseWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 
-
+@Service
 @RequiredArgsConstructor
 public class RoleService implements RoleServiceInterface {
 
     private final AuthenticationContract auth;
     private final RoleRepository roleRepository;
-    private final RoleMapper roleMapper;
     @Override
     public ResponseWrapper<RoleResponseDto> save(RoleRequestDto requestDto) {
         User user = auth.getAuthenticatedUser();
