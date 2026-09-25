@@ -2,7 +2,9 @@ package com.project.fintrack2.user.controller;
 
 
 import com.project.fintrack2.user.dto.request.RoleRequestDto;
+import com.project.fintrack2.user.dto.request.UpdateUserRoleDto;
 import com.project.fintrack2.user.dto.response.RoleResponseDto;
+import com.project.fintrack2.user.dto.response.UserResponseDto;
 import com.project.fintrack2.user.services.contract.RoleServiceInterface;
 import com.project.fintrack2.utility.response.ResponseWrapper;
 import jakarta.validation.Valid;
@@ -25,4 +27,8 @@ public class RoleController {
     public ResponseEntity<ResponseWrapper<RoleResponseDto>> save(@RequestBody  @Valid RoleRequestDto requestDto){
         return ResponseEntity.ok(roleServiceInterface.save(requestDto));
     }
+
+
+
+
 }

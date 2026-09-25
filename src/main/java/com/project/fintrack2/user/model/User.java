@@ -11,9 +11,7 @@ import org.hibernate.type.SqlTypes;
 
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 
 @Entity
@@ -52,10 +50,10 @@ public class User {
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles = new ArrayList<>();
+    private Set<Role> roles = new HashSet<>();
 
 
-    public List<Role> addRole(Role role){
+    public Set<Role> addRole(Role role){
         this.roles.add(role);
         return this.roles;
     }

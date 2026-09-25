@@ -39,6 +39,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException err ){
-
+        return ResponseEntity.badRequest().body(err.getMessage());
     }
 }

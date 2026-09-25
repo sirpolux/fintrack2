@@ -13,5 +13,5 @@ public interface RoleServiceInterface {
     ResponseWrapper<RoleResponseDto> fetchAll(PaginationRequestDto  pageData);
     ResponseWrapper<RoleRequestDto> updateRole(RoleRequestDto requestDto);
     void deleteRole(String roleId);
-    ResponseWrapper<UserResponseDto> assignRoleToUser(UpdateUserRoleDto request);
+
 }

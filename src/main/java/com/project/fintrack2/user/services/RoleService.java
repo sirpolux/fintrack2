@@ -66,12 +66,5 @@ public class RoleService implements RoleServiceInterface {
 
     }
 
-    @Override
-    public ResponseWrapper<UserResponseDto> assignRoleToUser(UpdateUserRoleDto request) {
-        User user = auth.getAuthenticatedUser();
-        Role role = (Role)utils.unwrapOptional(roleRepository.findById(request.getRoleId()), "role");
-        user.addRole(role);
-        return ResponseWrapper.success("New Role assigned",
-                userMapper.toUserResponseDto(userRepository.save(user)),HttpStatus.OK);
-    }
+
 }
