@@ -7,10 +7,12 @@ import com.project.fintrack2.user.dto.response.RoleResponseDto;
 import com.project.fintrack2.user.dto.response.UserResponseDto;
 import com.project.fintrack2.utility.response.ResponseWrapper;
 
+import java.util.List;
+
 public interface RoleServiceInterface {
     ResponseWrapper<RoleResponseDto> save(RoleRequestDto requestDto);
     ResponseWrapper<RoleResponseDto> find(Long roleId);
-    ResponseWrapper<RoleResponseDto> fetchAll(PaginationRequestDto  pageData);
+    ResponseWrapper<List<RoleResponseDto>> fetchAll(PaginationRequestDto  pageData);
     ResponseWrapper<RoleRequestDto> updateRole(RoleRequestDto requestDto);
     void deleteRole(String roleId);
 

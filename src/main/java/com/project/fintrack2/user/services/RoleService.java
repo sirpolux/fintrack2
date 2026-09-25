@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -52,8 +53,16 @@ public class RoleService implements RoleServiceInterface {
     }
 
     @Override
-    public ResponseWrapper<RoleResponseDto> fetchAll(PaginationRequestDto pageData) {
-        return null;
+    public ResponseWrapper<List<RoleResponseDto>> fetchAll(PaginationRequestDto pageData) {
+        List<Role> roles = roleRepository.findAll();
+        return ResponseWrapper.success(
+                "Roles retrieved",
+                roles.stream()
+                        .map(roleMapper::toRoleResponseDto)
+                        .toList(),
+                HttpStatus.OK
+        );
+
     }
 
     @Override
