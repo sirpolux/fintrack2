@@ -9,11 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class RoleMapper {
 
-    public  RoleResponseDto toRoleResponseDto(Role roles){
+    public  RoleResponseDto toRoleResponseDto(Role role){
         return RoleResponseDto
                 .builder()
-                .name(roles.getName())
-                .description(roles.getDescription())
+                .id(role.getId())
+                .name(role.getName())
+                .description(role.getDescription())
                 .build();
     }
 

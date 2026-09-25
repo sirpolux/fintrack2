@@ -65,11 +65,12 @@ public class UserService implements UserServiceInt {
     @Override
     public ResponseWrapper<UserResponseDto> assignRoleToUser(UpdateUserRoleDto request) {
         User user = auth.getAuthenticatedUser();
+        User targetUser = (User)utils.unwrapOptional(userRepository.findByUuid(request.getUserId()), "user");
         Role role = (Role)utils.unwrapOptional(roleRepository.findById(request.getRoleId()), "role");
         //check  if user already has role
-        user.addRole(role);
+        targetUser.addRole(role);
         return ResponseWrapper.success("New Role assigned",
-                userMapper.toUserResponseDto(userRepository.save(user)),HttpStatus.OK);
+                userMapper.toUserResponseDto(userRepository.save(targetUser)),HttpStatus.OK);
     }
 
     @Override

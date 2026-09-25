@@ -4,6 +4,7 @@ import com.project.fintrack2.user.enums.Status;
 import lombok.*;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @AllArgsConstructor
@@ -12,6 +13,7 @@ import java.util.List;
 @Setter
 @Builder
 public class UserResponseDto {
+    private UUID uuid;
     private String firstName;
     private String lastName;
     private String email;
