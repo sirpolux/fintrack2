@@ -3,10 +3,13 @@ package com.project.fintrack2.mapper;
 import com.project.fintrack2.user.dto.request.RoleRequestDto;
 import com.project.fintrack2.user.dto.response.RoleResponseDto;
 import com.project.fintrack2.user.model.Role;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class RoleMapper {
 
-    public static RoleResponseDto toRoleResponseDto(Role roles){
+    public  RoleResponseDto toRoleResponseDto(Role roles){
         return RoleResponseDto
                 .builder()
                 .name(roles.getName())
@@ -15,7 +18,7 @@ public class RoleMapper {
     }
 
 
-    public static Role toRole(RoleRequestDto requestDto){
+    public  Role toRole(RoleRequestDto requestDto){
         Role role = new Role();
         role.setName(requestDto.getName());
         role.setDescription(requestDto.getDescription());

@@ -3,10 +3,17 @@ package com.project.fintrack2.mapper;
 import com.project.fintrack2.user.dto.request.UserRequestDto;
 import com.project.fintrack2.user.dto.response.UserResponseDto;
 import com.project.fintrack2.user.model.User;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+
+@Service
+@RequiredArgsConstructor
 public class UserMapper {
 
-    public static User toUser(UserRequestDto userRequest){
+    private final RoleMapper roleMapper;
+
+    public  User toUser(UserRequestDto userRequest){
         return User
                 .builder()
                 .firstName(userRequest.getFirstname())
@@ -17,7 +24,7 @@ public class UserMapper {
                 .build();
     }
 
-    public static UserResponseDto toUserResponseDto(User user){
+    public  UserResponseDto toUserResponseDto(User user){
         return UserResponseDto.builder()
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
@@ -25,7 +32,7 @@ public class UserMapper {
                 .phoneNumber(user.getPhoneNumber())
                 .roles(user.getRoles()!=null? user.getRoles()
                         .stream()
-                        .map(RoleMapper::toRoleResponseDto)
+                        .map(roleMapper::toRoleResponseDto)
                         .toList():null)
                 .build();
     }

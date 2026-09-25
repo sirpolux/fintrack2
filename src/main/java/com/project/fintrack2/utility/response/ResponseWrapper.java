@@ -39,7 +39,7 @@ public class ResponseWrapper<T> {
         return new ResponseWrapper<T>(
                 true,
                 List.of(messages),
-                HttpStatus.OK.value(),
+                status.value(),
                 null,
                 data,
                 null
@@ -51,7 +51,7 @@ public class ResponseWrapper<T> {
         return new ResponseWrapper<>(
                 true,
                 List.of(message),
-                HttpStatus.OK.value(),
+                status.value(),
                 null,
                 null,
                 null

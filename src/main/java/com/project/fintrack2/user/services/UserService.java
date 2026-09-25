@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService implements UserServiceInt {
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     @Override
     public ResponseWrapper<UserResponseDto> createAccount(UserRequestDto userRequestDto) {
@@ -29,10 +30,10 @@ public class UserService implements UserServiceInt {
         if(userRepository.existsByEmail(userRequestDto.getEmail())){
             throw  new EmailAlreadyExistsException("This email address is not available");
         }
-        User user = UserMapper.toUser(userRequestDto);
+        User user = userMapper.toUser(userRequestDto);
         user.setPassword(Utility.encoder.encode(userRequestDto.getPassword()));
         User createdUser = userRepository.save(user);
-        return ResponseWrapper.success("User account created", UserMapper.toUserResponseDto(createdUser), HttpStatus.CREATED);
+        return ResponseWrapper.success("User account created", userMapper.toUserResponseDto(createdUser), HttpStatus.CREATED);
 
 
     }

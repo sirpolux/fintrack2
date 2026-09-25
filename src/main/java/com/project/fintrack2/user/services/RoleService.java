@@ -2,17 +2,25 @@ package com.project.fintrack2.user.services;
 
 import com.project.fintrack2.auth.AuthenticationContract;
 import com.project.fintrack2.dto.PaginationRequestDto;
+import com.project.fintrack2.exception.ResourceNotFoundException;
 import com.project.fintrack2.mapper.RoleMapper;
+import com.project.fintrack2.mapper.UserMapper;
 import com.project.fintrack2.user.dto.request.RoleRequestDto;
+import com.project.fintrack2.user.dto.request.UpdateUserRoleDto;
 import com.project.fintrack2.user.dto.response.RoleResponseDto;
+import com.project.fintrack2.user.dto.response.UserResponseDto;
 import com.project.fintrack2.user.model.Role;
 import com.project.fintrack2.user.model.User;
 import com.project.fintrack2.user.repo.RoleRepository;
+import com.project.fintrack2.user.repo.UserRepository;
 import com.project.fintrack2.user.services.contract.RoleServiceInterface;
+import com.project.fintrack2.utility.Utility;
 import com.project.fintrack2.utility.response.ResponseWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,18 +28,27 @@ public class RoleService implements RoleServiceInterface {
 
     private final AuthenticationContract auth;
     private final RoleRepository roleRepository;
+    private final Utility utils;
+    private final RoleMapper roleMapper;
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
+
     @Override
     public ResponseWrapper<RoleResponseDto> save(RoleRequestDto requestDto) {
         User user = auth.getAuthenticatedUser();
-        Role role = RoleMapper.toRole(requestDto);
+        Role role = roleMapper.toRole(requestDto);
         role.setCreatedBy(user);
         Role createdRole = roleRepository.save(role);
-        return ResponseWrapper.success("Role created",RoleMapper.toRoleResponseDto(createdRole), HttpStatus.CREATED);
+        return ResponseWrapper.success("Role created",roleMapper.toRoleResponseDto(createdRole), HttpStatus.CREATED);
     }
 
     @Override
-    public ResponseWrapper<RoleResponseDto> find(String roleId) {
-        return null;
+    public ResponseWrapper<RoleResponseDto> find(Long roleId) {
+        Optional<Role> role = roleRepository.findById(roleId);
+        if (role.isEmpty()){
+            throw new ResourceNotFoundException("Resource was not found for the provided Id");
+        }
+        return ResponseWrapper.success("Found", roleMapper.toRoleResponseDto(role.get()),HttpStatus.CREATED) ;
     }
 
     @Override
@@ -47,5 +64,14 @@ public class RoleService implements RoleServiceInterface {
     @Override
     public void deleteRole(String roleId) {
 
+    }
+
+    @Override
+    public ResponseWrapper<UserResponseDto> assignRoleToUser(UpdateUserRoleDto request) {
+        User user = auth.getAuthenticatedUser();
+        Role role = (Role)utils.unwrapOptional(roleRepository.findById(request.getRoleId()), "role");
+        user.addRole(role);
+        return ResponseWrapper.success("New Role assigned",
+                userMapper.toUserResponseDto(userRepository.save(user)),HttpStatus.OK);
     }
 }

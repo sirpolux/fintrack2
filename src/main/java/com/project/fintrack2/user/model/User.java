@@ -54,6 +54,12 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles = new ArrayList<>();
 
+
+    public List<Role> addRole(Role role){
+        this.roles.add(role);
+        return this.roles;
+    }
+
     private LocalDateTime createAt;
     private LocalDateTime updatedAt;
 

@@ -36,4 +36,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handlesInvalidLoginCredentialsException(String message){
         return ResponseEntity.badRequest().body(message);
     }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException err ){
+
+    }
 }
