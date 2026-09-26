@@ -1,4 +1,4 @@
-package com.project.fintrack2.transaction.dto;
+package com.project.fintrack2.transaction.dto.response;
 
 import com.project.fintrack2.account.dto.AccountResponseDto;
 import com.project.fintrack2.categories.model.Category;
@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TransactionDto {
+public class TransactionResponseDto {
     private Long id;
     private String transactionReference;
     private Category category;
