@@ -41,4 +41,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException err ){
         return ResponseEntity.badRequest().body(err.getMessage());
     }
+
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<String> handlesAccessDeniedException(AccessDeniedException err){
+        return ResponseEntity.badRequest().body(err.getMessage());
+    }
 }
