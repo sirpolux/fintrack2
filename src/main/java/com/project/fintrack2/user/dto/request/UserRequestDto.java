@@ -22,6 +22,7 @@ public class UserRequestDto {
     @NotNull(message = "Email is required")
     @Email(message = "Invalid email format")
     private String email;
+
     @NotNull(message = "Phone number is required")
     private String phoneNumber;
 //    @NotNull(message = "Role is required")
