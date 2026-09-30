@@ -1,6 +1,7 @@
 package com.project.fintrack2.user.dto.request;
 
 
+import com.project.fintrack2.annotation.ValidPassword;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -29,7 +30,7 @@ public class UserRequestDto {
     private Long roleId;
 
     @NotNull(message = "Password is required")
-    @Size(min = 8, message = "Password must have at least 8 characters")
+    @ValidPassword
     private String password;
     @NotNull(message = "Confirm password is required")
     @Size(min = 8, message = "confirm password must have at least 8 characters")
