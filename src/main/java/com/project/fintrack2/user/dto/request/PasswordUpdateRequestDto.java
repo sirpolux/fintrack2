@@ -1,6 +1,7 @@
 package com.project.fintrack2.user.dto.request;
 
 
+import com.project.fintrack2.annotation.ValidPassword;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +17,7 @@ public class PasswordUpdateRequestDto {
     @NotNull(message = "Current password is required")
     private String currentPassword;
     @NotNull(message = "New password is required")
+    @ValidPassword
     private String newPassword;
     @NotNull(message = "Confirm password is required")
     private String confirmPassword;
