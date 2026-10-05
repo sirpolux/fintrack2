@@ -1,6 +1,7 @@
 package com.project.fintrack2.user.controller;
 
 
+import com.project.fintrack2.annotation.RequiresRole;
 import com.project.fintrack2.user.dto.request.UpdateUserRoleDto;
 import com.project.fintrack2.user.dto.request.UserRequestDto;
 import com.project.fintrack2.user.dto.response.UserResponseDto;
@@ -30,6 +31,7 @@ public class UserController {
     }
 
     @PostMapping("/assign-role")
+    @RequiresRole("ADMIN")
     public ResponseEntity<ResponseWrapper<UserResponseDto>> addRoleToUser(@RequestBody @Valid UpdateUserRoleDto requestDto){
         return ResponseEntity.ok(userService.assignRoleToUser(requestDto));
     }
