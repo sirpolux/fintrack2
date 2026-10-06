@@ -47,4 +47,8 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handlesAccessDeniedException(AccessDeniedException err){
         return ResponseEntity.badRequest().body(err.getMessage());
     }
+    @ExceptionHandler(InsufficientBalanceException.class)
+    public ResponseEntity<String> handles(InsufficientBalanceException  exception){
+        return ResponseEntity.badRequest().body(exception.getMessage());
+    }
 }
