@@ -16,9 +16,13 @@ import com.project.fintrack2.user.services.contract.UserServiceInt;
 import com.project.fintrack2.utility.Utility;
 import com.project.fintrack2.utility.response.ResponseWrapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 
@@ -76,6 +80,9 @@ public class UserService implements UserServiceInt {
     @Override
     public ResponseWrapper<List<UserResponseDto>> fetchUsers() {
         List<User> users= userRepository.findAll();
+        Page<User> user2 = userRepository.findAll(PageRequest.of(2,10, Sort.Direction.valueOf("desc")));
+
+        PageRequest.of(2,10, Sort.Direction.valueOf("desc"));
         return ResponseWrapper.success("Users retrieved",  users
                 .stream()
                 .map(userMapper::toUserResponseDto)

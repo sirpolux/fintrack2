@@ -11,5 +11,5 @@ public interface AccountServiceInterface {
     ResponseEntity<AccountResponseDto> createAccount(AccountRequestDto requestDto);
     ResponseEntity<AccountResponseDto> getAccount (Integer account_id);
     ResponseEntity<List<AccountResponseDto>> getAllAccount(PaginationRequestDto paginationRequestDto);
-    ResponseEntity<AccountResponseDto> updateAccountDetails(AccountRequestDto accountRequestDto);git
+    ResponseEntity<AccountResponseDto> updateAccountDetails(AccountRequestDto accountRequestDto);
 }

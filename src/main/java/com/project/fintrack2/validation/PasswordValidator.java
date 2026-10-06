@@ -1,4 +1,4 @@
-package com.project.fintrack2;
+package com.project.fintrack2.validation;
 
 import com.project.fintrack2.annotation.ValidPassword;
 import jakarta.validation.ConstraintValidator;

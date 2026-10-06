@@ -1,12 +1,10 @@
 package com.project.fintrack2.annotation;
 
-import com.project.fintrack2.PasswordValidator;
+import com.project.fintrack2.validation.PasswordValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
 import java.lang.annotation.*;
-import java.util.Calendar;
-
 
 
 @Target(ElementType.FIELD)
