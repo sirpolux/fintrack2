@@ -4,6 +4,7 @@ package com.project.fintrack2.audit.controller;
 import com.project.fintrack2.audit.dto.response.AuditResponseDto;
 import com.project.fintrack2.utility.response.ResponseWrapper;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +20,8 @@ public class AuditController {
     }
 
 
-    @GetMapping
-    public ResponseWrapper<AuditResponseDto> getAudit(){
+    @GetMapping("/{id}")
+    public ResponseWrapper<AuditResponseDto> getAudit(@PathVariable Long id){
         return null;
     }
 }
