@@ -3,30 +3,39 @@ package com.project.fintrack2.account.service;
 import com.project.fintrack2.account.dto.AccountRequestDto;
 import com.project.fintrack2.account.dto.AccountResponseDto;
 import com.project.fintrack2.account.model.Account;
+import com.project.fintrack2.account.model.AccountRepository;
 import com.project.fintrack2.account.service.inte.AccountServiceInterface;
 import com.project.fintrack2.auth.AuthenticationContract;
 import com.project.fintrack2.dto.PaginationRequestDto;
+import com.project.fintrack2.exception.DuplicateAccountException;
 import com.project.fintrack2.mapper.AccountMapper;
 import com.project.fintrack2.user.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Service
 @RequiredArgsConstructor
 public class AccountService implements AccountServiceInterface {
 
     private final AccountMapper accountMapper;
     private final AuthenticationContract auth;
+    private final AccountRepository accountRepository;
+
 
     @Override
     public ResponseEntity<AccountResponseDto> createAccount(AccountRequestDto requestDto) {
         Account account = accountMapper.toAccount(requestDto);
         User user = auth.getAuthenticatedUser();
         account.setUser(user);
-
-        return null;
+        Boolean accountExist = accountRepository.existsByUserAndAccountNameAndAccountType(user, requestDto.getAccountName(), requestDto.getAccountType());
+        if (accountExist){
+            throw  new DuplicateAccountException("Account type and name already exists");
+        }
+        Account createdAccount = accountRepository.save(account);
+        return ResponseEntity.ok(accountMapper.toAccountResponseDto(createdAccount));
     }
 
     @Override
