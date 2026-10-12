@@ -6,6 +6,7 @@ import com.project.fintrack2.account.model.Currency;
 import com.project.fintrack2.user.model.User;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -15,12 +16,12 @@ import java.time.LocalDate;
 @Builder
 public class AccountResponseDto {
     private Long id;
-    private User user_id;
     private String accountName;
     private AccountType accountType;
     private Currency currency;
-    private Float accountBalance;
+    private BigDecimal accountBalance;
     private Status status;
     private LocalDate dateCreated;
     private LocalDate lastUpdated;
+    private Integer version;
 }

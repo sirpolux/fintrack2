@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -27,27 +29,22 @@ public class Account {
     @ManyToOne
     @JsonIgnore
     @JsonBackReference
-    private User userId;
+    private User user;
+
     private String accountName;
 
     @Enumerated
     private AccountType accountType;
-
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(name = "accounts_currencies",
-//            joinColumns = @JoinColumn(name = "account_id"),
-//            inverseJoinColumns = @JoinColumn(name="currency_id"))
-//    private List<Currency> currency;
-
     @ManyToOne
     private Currency currency;
-
     private Integer version;
-
     private BigDecimal accountBalance;
 
     @Enumerated
     private Status status;
+
+    @CreationTimestamp
     private LocalDate dateCreated;
+    @UpdateTimestamp
     private LocalDate updatedAt;
 }
