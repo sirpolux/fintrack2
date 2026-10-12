@@ -14,7 +14,7 @@ public class CurrencyRequestDto {
     @NotNull(message = "Short code is required")
     private String shortCode;
     @NotNull (message = "Currency code is required")
-    private String currencyCode;
+    private String currencyName;
     @NotNull
     private String symbol;
     @NotNull

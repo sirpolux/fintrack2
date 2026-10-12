@@ -10,7 +10,9 @@ import com.project.fintrack2.dto.PaginationRequestDto;
 import com.project.fintrack2.exception.DuplicateAccountException;
 import com.project.fintrack2.mapper.AccountMapper;
 import com.project.fintrack2.user.model.User;
+import com.project.fintrack2.utility.response.ResponseWrapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,7 @@ public class AccountService implements AccountServiceInterface {
 
 
     @Override
-    public ResponseEntity<AccountResponseDto> createAccount(AccountRequestDto requestDto) {
+    public ResponseWrapper<AccountResponseDto> createAccount(AccountRequestDto requestDto) {
         Account account = accountMapper.toAccount(requestDto);
         User user = auth.getAuthenticatedUser();
         account.setUser(user);
@@ -35,21 +37,21 @@ public class AccountService implements AccountServiceInterface {
             throw  new DuplicateAccountException("Account type and name already exists");
         }
         Account createdAccount = accountRepository.save(account);
-        return ResponseEntity.ok(accountMapper.toAccountResponseDto(createdAccount));
+        return ResponseWrapper.success("Account created",accountMapper.toAccountResponseDto(createdAccount), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<AccountResponseDto> getAccount(Integer account_id) {
+    public ResponseWrapper<AccountResponseDto> getAccount(Integer account_id) {
         return null;
     }
 
     @Override
-    public ResponseEntity<List<AccountResponseDto>> getAllAccount(PaginationRequestDto paginationRequestDto) {
+    public ResponseWrapper<List<AccountResponseDto>> getAllAccount(PaginationRequestDto paginationRequestDto) {
         return null;
     }
 
     @Override
-    public ResponseEntity<AccountResponseDto> updateAccountDetails(AccountRequestDto accountRequestDto) {
+    public ResponseWrapper<AccountResponseDto> updateAccountDetails(AccountRequestDto accountRequestDto) {
         return null;
     }
 }
