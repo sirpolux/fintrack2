@@ -8,6 +8,7 @@ import com.project.fintrack2.account.service.inte.CurrencyServiceInterface;
 import com.project.fintrack2.auth.AuthenticationContract;
 import com.project.fintrack2.dto.PaginationRequestDto;
 import com.project.fintrack2.exception.CurrencyAlreadyExistsException;
+import com.project.fintrack2.exception.ResourceNotFoundException;
 import com.project.fintrack2.mapper.CurrencyMapper;
 import com.project.fintrack2.user.model.User;
 import com.project.fintrack2.utility.response.ResponseWrapper;
@@ -16,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -41,7 +43,12 @@ public class CurrencyService implements CurrencyServiceInterface
 
     @Override
     public ResponseWrapper<CurrencyResponseDto> getCurrency(Long currencyId) {
-        return null;
+        Optional<Currency>  currency = currencyRepository.findById(currencyId);
+        if (currency.isEmpty()){
+            throw new ResourceNotFoundException("Resource not found "+ "Currency");
+        }
+        Currency selectedCurrency = currency.get();
+        return ResponseWrapper.success("Fetched Currency", currencyMapper.toCurrencyResponseDto(selectedCurrency), HttpStatus.OK);
     }
 
     @Override

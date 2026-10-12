@@ -5,6 +5,7 @@ import com.project.fintrack2.account.service.inte.CurrencyServiceInterface;
 import com.project.fintrack2.utility.response.ResponseWrapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,5 +19,10 @@ public class CurrencyController {
     @PostMapping
     public ResponseEntity<ResponseWrapper<?>> saveCurrency(CurrencyRequestDto currencyRequestDto){
         return ResponseEntity.ok(currencyService.addCurrency(currencyRequestDto));
+    }
+
+    @GetMapping
+    public ResponseEntity<ResponseWrapper<?>> getCurrency(Long currencyId){
+        return ResponseEntity.ok(currencyService.getCurrency(currencyId));
     }
 }
